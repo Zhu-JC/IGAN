@@ -5,7 +5,7 @@ A method for Inferring cell-cell communication pathways represented by spatial g
 ## Installation
 IGAN can be installed in R by devtools:
 
-``devtools::install_github('ZJC/IGAN')``
+``devtools::install_github('Zhu-JC/IGAN')``
 
 ## Tutorials
 ``library(IGAN)``  
