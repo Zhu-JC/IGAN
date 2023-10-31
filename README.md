@@ -9,6 +9,21 @@ IGAN can be installed in R by devtools:
 
 ## Tutorials
 ``library(IGAN)``  
+``library(clusterProfiler)``  
+``library(org.Hs.eg.db)``  
+``library(org.Mm.eg.db)``  
+``library(ggplot2)``  
+``library(ggsankey)``  
+``library(networkD3)``  
+``library(KEGGREST)``  
+``library(tidyverse)``  
+``library(plotly)``  
+``library(magick)``  
+``library(CellChat)``  
+``library(patchwork)``  
+``library(NMF)``  
+``library(ggalluvial)``  
+``library(ComplexHeatmap)``  
 
 #loading input datas  
 ##spatial is coordinate information, a dataframe which rows represent spots and 2 cols represent coordinate.  
