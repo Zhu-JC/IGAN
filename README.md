@@ -29,7 +29,7 @@ __#loading input datas.__
 __##spatial is coordinate information, a dataframe which rows represent spots and 2 cols represent coordinate.__  
 ``spatial = read.csv('spatial.csv')``  
 
-__##ident is celltype information, a 1 column dataframe which rows represent spots.__
+__##ident is celltype information, a 1 column dataframe which rows represent spots.__  
 ``ident = read.csv('ident.csv')``  
 
 __##M is gene expression matrix, a dataframe which cols represent genes and rows represent spots.__  
@@ -60,11 +60,41 @@ result is a list of n lists, n is the number of groups get in ``cells_to_group``
 __#Loading the precomputed tumor data.__  
 load('tumor.Rdata')  
 
-__#Get the matrix contain every spots' CCC feature__  
+__#Get the matrix contain every spots' CCC feature.__  
 ``cccM = get_cccM(result, cells_group, spatial, gene, match_list1, match_list2)``  
 cccM is described in network analysis of IGAN part in our paper.  
 
-__#Get the graph of CCC activity of every spot__  
+__#Get the graph of CCC activity of every spot.__  
 ``a = plot_cor(result, cells_group, spatial)``  
 ``a + scale_color_distiller(palette = "Set1")``  
-![image](data/plot_cor.png)
+![image](data/plot_cor.png)  
+
+__#Get the graph of SPP1's CCC activity of every spot.__  
+``a = plot_Genecor('SPP1', result, cells_group, spatial, match_list1, gene)``  
+``a + scale_color_distiller(palette = "Set1")``  
+![image](data/plot_Genecor.png)  
+
+__#Get the cellchat's network circle graph.__  
+``par(mfrow = c(1,1), xpd=TRUE)``  
+``plot_cellchat('SPP1',result,cells_group,gene,match_list1,ident)``  
+``dev.off()``  
+![image](data/plot_cellchat.png)  
+
+__#Get the  sankey graph of ligand's GO-ligand-recepter-downstream pathway.__  
+``sankey_graph = plot_sankey(result,cells_group,gene,match_list1,match_list2,0.001,5)``  
+``sankeyNetwork(Links = sankey_graph[[1]], Nodes =sankey_graph[[2]], Source = 'source',
+              Target = 'target', Value = 'value', NodeID = 'name',LinkGroup = 'color',
+              units = 'TWh', fontSize = 20, nodeWidth = 30, margin = 1, height = NULL,
+              sinksRight = FALSE)``  
+``dev.off()`` 
+![image](data/plot_sankey.png)  
+
+__#Get the graph of CCC pattern.__  
+``pattern_graph = plot_pattern(result,cells_group,gene,match_list1,match_list2,ident,'outgoing',4)``  
+``pushViewport(viewport(x = 0.1, y = 0.1, width = 0.2, height = 0.8, just = c("left", "bottom")))``  
+``grid.draw(pattern_graph[[1]])``  
+``popViewport()``  
+``pushViewport(viewport(x = 0.6, y = 0.1, width = 0.2, height = 0.8, just = c("left", "bottom")))``  
+``grid.draw(pattern_graph[[2]])``  
+``popViewport()``  
+![image](data/plot_pattern.png)  
