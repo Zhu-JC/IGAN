@@ -8,7 +8,7 @@ IGAN can be installed in R by devtools:
 ``devtools::install_github('Zhu-JC/IGAN')``
 
 ## Tutorials
-``library(IGAN)``  
+``library(IGAN2)``  
 ``library(clusterProfiler)``  
 ``library(org.Hs.eg.db)``  
 ``library(org.Mm.eg.db)``  
