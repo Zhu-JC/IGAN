@@ -24,6 +24,7 @@ IGAN can be installed in R by devtools:
 ``library(NMF)``  
 ``library(ggalluvial)``  
 ``library(ComplexHeatmap)``  
+``library(gridExtra)``
 
 __#loading input datas.__  
 __##spatial is coordinate information, a dataframe which rows represent spots and 2 cols represent coordinate.__  
